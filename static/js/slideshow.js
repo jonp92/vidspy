@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", async function() {
         console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
 
         overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
-        overlayContext.fillRect(clickX - 10, clickY - 10, 20, 20); // Draw a small square at the click position
-        overlayContext.strokeRect(clickX - 10, clickY - 10, 20, 20); // Draw a border around the square
+        overlayContext.fillRect(clickX, clickY, 20, 20); // Draw a small square at the click position
+        overlayContext.strokeRect(clickX, clickY, 20, 20); // Draw a border around the square
         setTimeout(() => {
             overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
         }, 5000); // Hide after 2 seconds
