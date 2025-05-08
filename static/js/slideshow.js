@@ -315,9 +315,9 @@ document.addEventListener("DOMContentLoaded", async function() {
     function buildSettingsMenu() {
         const settingsMenu = document.createElement("div");
         settingsMenu.id = "settingsMenu";
-        settingsMenu.classList.add("context-menu");
         document.body.appendChild(settingsMenu);
         const settingsMenuList = document.createElement("ul");
+        settingsMenuList.classList.add("context-menu");
         settingsMenu.appendChild(settingsMenuList);
         const qualityOptions = ["Low", "Medium", "High"];
         qualityOptions.forEach(option => {
