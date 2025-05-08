@@ -179,47 +179,47 @@ document.addEventListener("DOMContentLoaded", async function() {
         startSlideshow(streams);
     });
 
-    videoStreamer.addEventListener("mouseenter", function(event) {
-        const eventX = event.clientX;
-        const eventY = event.clientY;
-        const videoWidth = videoStreamer.clientWidth;
-        const videoHeight = videoStreamer.clientHeight;
-        const clickX = (eventX / videoWidth) * 100;
-        const clickY = (eventY / videoHeight) * 100;
-        console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
+    // videoStreamer.addEventListener("mouseenter", function(event) {
+    //     const eventX = event.clientX;
+    //     const eventY = event.clientY;
+    //     const videoWidth = videoStreamer.clientWidth;
+    //     const videoHeight = videoStreamer.clientHeight;
+    //     const clickX = (eventX / videoWidth) * 100;
+    //     const clickY = (eventY / videoHeight) * 100;
+    //     console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
 
-        // overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
-        // overlayContext.fillRect(eventX - 10, eventY - 10, 20, 20); // Draw a small square at the click position
-        // overlayContext.strokeRect(eventX - 10, eventY - 10, 20, 20); // Draw a border around the square
-        // setTimeout(() => {
-        //     overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
-        // }, 5000); // Hide after 2 seconds
-        if (eventX < videoWidth / 8) {
-            console.log("Left quarter clicked");
-            overlayContext.fillStyle = "rgba(73, 73, 73, 0.65)";
-            overlayContext.fillRect(0, 0, videoWidth / 8, videoHeight); // Fill the left quarter with a semi-transparent color
-            drawArrow("left", true);
-            return;
-        } else if (eventX > (videoWidth * 7) / 8) {
-            console.log("Right quarter clicked");
-            overlayContext.fillStyle = "rgba(73, 73, 73, 0.65)";
-            overlayContext.fillRect(videoWidth * 7 / 8, 0, videoWidth / 8, videoHeight); // Fill the right quarter with a semi-transparent color
-            drawArrow("right", true);
-            return;
-        }
-    });
+    //     // overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
+    //     // overlayContext.fillRect(eventX - 10, eventY - 10, 20, 20); // Draw a small square at the click position
+    //     // overlayContext.strokeRect(eventX - 10, eventY - 10, 20, 20); // Draw a border around the square
+    //     // setTimeout(() => {
+    //     //     overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
+    //     // }, 5000); // Hide after 2 seconds
+    //     if (eventX < videoWidth / 8) {
+    //         console.log("Left quarter clicked");
+    //         overlayContext.fillStyle = "rgba(73, 73, 73, 0.65)";
+    //         overlayContext.fillRect(0, 0, videoWidth / 8, videoHeight); // Fill the left quarter with a semi-transparent color
+    //         drawArrow("left", true);
+    //         return;
+    //     } else if (eventX > (videoWidth * 7) / 8) {
+    //         console.log("Right quarter clicked");
+    //         overlayContext.fillStyle = "rgba(73, 73, 73, 0.65)";
+    //         overlayContext.fillRect(videoWidth * 7 / 8, 0, videoWidth / 8, videoHeight); // Fill the right quarter with a semi-transparent color
+    //         drawArrow("right", true);
+    //         return;
+    //     }
+    // });
 
-    videoStreamer.addEventListener("mouseleave", function(event) {
-        const eventX = event.clientX;
-        const eventY = event.clientY;
-        const videoWidth = videoStreamer.clientWidth;
-        const videoHeight = videoStreamer.clientHeight;
-        const clickX = (eventX / videoWidth) * 100;
-        const clickY = (eventY / videoHeight) * 100;
-        console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
+    // videoStreamer.addEventListener("mouseleave", function(event) {
+    //     const eventX = event.clientX;
+    //     const eventY = event.clientY;
+    //     const videoWidth = videoStreamer.clientWidth;
+    //     const videoHeight = videoStreamer.clientHeight;
+    //     const clickX = (eventX / videoWidth) * 100;
+    //     const clickY = (eventY / videoHeight) * 100;
+    //     console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
 
-        overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
-    });
+    //     overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
+    // });
 
     videoStreamer.addEventListener("error", function() {
         alert("Error loading video. Please check the URL or try a different video.");
