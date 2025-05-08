@@ -73,6 +73,13 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         slideshowTimeout = setTimeout(() => startSlideshow(streams), 15000); // Change every 5 seconds
     }
+
+    function findParentDiv(element) {
+        while (element && element.tagName !== "DIV") {
+            element = element.parentElement;
+        }
+        return element;
+    }
     
     // Function to render the context menu from the template
     function renderContextMenu() {
@@ -81,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             for (const listItem of templateContent.querySelectorAll("li")) {
                 listItem.addEventListener("click", function(event) {
                     event.preventDefault();
-                    console.log(`Clicked on ${event.target.parentElement}`);
+                    console.log(`Clicked on ${findParentDiv(event.target).textContent}`);
                     if (event.target.textContent === "Settings") {
                         settingsMenu.classList.toggle("active");
                         return;
