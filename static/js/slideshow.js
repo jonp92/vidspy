@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     function drawArrow(side) {
         const arrowWidth = 40;
-        const arrowHeight = 20;
+        const arrowHeight = 30;
         const arrowX = side === "left" ? 20 : videoStreamer.clientWidth - arrowWidth - 20;
         const arrowY = (videoStreamer.clientHeight - arrowHeight) / 2;
     
