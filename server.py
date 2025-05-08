@@ -83,12 +83,24 @@ class VidSpyServer:
         
         @self.app.route('/stop', methods=['POST'])
         def stop():
-            # Logic to stop the video stream
-            if self.video_stream is not None:
-                self.video_stream.stop()
-                self.logger.info("Video stream stopped.")
-                self.video_stream = None
-            return jsonify({"message": "Video stream stopped."})
+            src = request.args.get('src', default='0', type=str)
+            if not src:
+                return jsonify({"error": "No source provided."}), 400
+            with self.thread_lock:
+                if src == 'all':
+                    for key, data in list(self.streams.items()):
+                        stream = data["stream"]
+                        self.logger.info(f"Stopping stream for src={key[0]}, width={key[1]}, height={key[2]}, fps={key[3]}")
+                        stream.stop()
+                        del self.streams[key]
+                else:
+                    for key, data in list(self.streams.items()):
+                        if key[0] == src:
+                            stream = data["stream"]
+                            self.logger.info(f"Stopping stream for src={key[0]}, width={key[1]}, height={key[2]}, fps={key[3]}")
+                            stream.stop()
+                            del self.streams[key]
+            return jsonify({"status": "success", "message": f"Stream for src={src} stopped."})
             
         @self.app.route('/streams', methods=['GET'])
         def streams():
