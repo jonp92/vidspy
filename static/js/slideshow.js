@@ -109,12 +109,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         overlayContext.closePath();
         overlayContext.fill();
     }
-    function drawArrows() {
-        overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the canvas
-        drawArrow("left");
-        drawArrow("right");
-    }
-    drawArrows();
+
 
     
     videoStreamer.addEventListener("click", function(event) {
@@ -134,9 +129,11 @@ document.addEventListener("DOMContentLoaded", async function() {
         }, 5000); // Hide after 2 seconds
         if (eventX < videoWidth / 4) {
             console.log("Left quarter clicked");
+            drawArrow("left");
             return;
         } else if (eventX > (videoWidth * 3) / 4) {
             console.log("Right quarter clicked");
+            drawArrow("right");
             return;
         }
         isPaused = !isPaused;
