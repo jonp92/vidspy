@@ -82,9 +82,8 @@ document.addEventListener("DOMContentLoaded", async function() {
                     event.preventDefault();
                     if (event.target.textContent === "Settings") {
                         const settingsMenu = buildSettingsMenu();
-                        contextMenuInstance.innerHTML = ""; // Clear the context menu
                         contextMenuInstance.appendChild(settingsMenu);
-                        document.body.appendChild(contextMenuInstance); // Append to the body
+
                         return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
