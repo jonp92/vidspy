@@ -109,6 +109,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                             videoStreamer.src = playPauseIconPath;
                             return;
                         }
+                        return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
                 });
