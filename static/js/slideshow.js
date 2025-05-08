@@ -111,10 +111,10 @@ document.addEventListener("DOMContentLoaded", async function() {
         setTimeout(() => {
             overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
         }, 5000); // Hide after 2 seconds
-        if (eventX < videoWidth / 2) {
-            console.log("Left half clicked");
+        if (eventX < videoWidth / 3) {
+            console.log("Left third clicked");
         } else {
-            console.log("Right half clicked");
+            console.log("Right third clicked");
         }
         isPaused = !isPaused;
         if (!isPaused) spinner();
