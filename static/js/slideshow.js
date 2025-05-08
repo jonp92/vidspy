@@ -331,7 +331,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     settingsQuality.addEventListener("change", function() {
         quality = settingsQuality.value;
         console.log("Selected quality:", quality);
-        settingsMenu.classList.toggle("active");
         if (isPaused) {
             clearTimeout(slideshowTimeout);
             videoStreamer.src = playPauseIconPath;
