@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     function buildSettingsMenu() {
         const settingsMenu = document.createElement("div");
         settingsMenu.id = "settingsMenu";
-        settingsMenu.classList.add("settings-menu");
+        settingsMenu.classList.add("context-menu");
         document.body.appendChild(settingsMenu);
         const settingsMenuList = document.createElement("ul");
         settingsMenu.appendChild(settingsMenuList);
