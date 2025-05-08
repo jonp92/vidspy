@@ -19,7 +19,10 @@
         <div class="spinner" id="spinner"
             {% if auto_play == 'false' %}style="display: none;"{% endif %}>
         </div>
-        <img id="videoStreamer" {% if auto_play == 'false' %} src="/static/img/play.svg"{% endif %} class="img-fluid" alt="Video Stream">
+        <div id="videoBox">
+            <canvas id="overlay" class="overlay"></canvas>
+            <img id="videoStreamer" {% if auto_play == 'false' %} src="/static/img/play.svg"{% endif %} class="img-fluid" alt="Video Stream">
+        </div>
     </div>
     <script src="static/js/slideshow.js"></script>
 </body>

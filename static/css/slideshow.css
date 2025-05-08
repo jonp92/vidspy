@@ -63,3 +63,54 @@ body {
         transform: translate(-50%, -50%) rotate(360deg);
     }
 }
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border-width: 5px;
+    }
+}
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+    }
+}
+@media (max-width: 320px) {
+    body {
+        font-size: 10px;
+    }
+    .spinner {
+        width: 30px;
+        height: 30px;
+        border-width: 3px;
+    }
+}
+@media (max-width: 240px) {
+    body {
+        font-size: 8px;
+    }
+    .spinner {
+        width: 20px;
+        height: 20px;
+        border-width: 2px;
+    }
+}
+@media (max-width: 120px) {
+    body {
+        font-size: 6px;
+    }
+    .spinner {
+        width: 10px;
+        height: 10px;
+        border-width: 1px;
+    }
+}
