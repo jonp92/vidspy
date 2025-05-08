@@ -104,13 +104,13 @@ document.addEventListener("DOMContentLoaded", async function() {
         overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
         overlayContext.beginPath();
     
-        if (side === "left") {
-            // Arrow pointing to the right
+        if (side === "right") {
+            // Arrow pointing to the left
             overlayContext.moveTo(arrowX, arrowY);
             overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight / 2);
             overlayContext.lineTo(arrowX, arrowY + arrowHeight);
-        } else if (side === "right") {
-            // Arrow pointing to the left
+        } else if (side === "left") {
+            // Arrow pointing to the right
             overlayContext.moveTo(arrowX + arrowWidth, arrowY);
             overlayContext.lineTo(arrowX, arrowY + arrowHeight / 2);
             overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight);
