@@ -1,6 +1,7 @@
 import time
 import os
 import json
+from datetime import datetime
 from flask import Flask, Response, request, jsonify, render_template
 from stream import VideoStream, cv2, threading
 
@@ -16,30 +17,42 @@ class VidSpyServer:
         self.define_routes()
         threading.Thread(target=self.cleanup_streams, daemon=True).start()
         
+    
     def get_or_create_stream(self, src, width, height, fps):
         """Get an existing stream or create a new one."""
         key = (src, width, height, fps)
-        if key not in self.streams or self.streams[key].stopped:
+        current_time = datetime.now()
+        if key not in self.streams or self.streams[key]["stream"].stopped:
             try:
                 self.logger.info(f"Creating new stream for src={src}, width={width}, height={height}, fps={fps}")
-                self.streams[key] = VideoStream(src=src, width=width, height=height, fps=fps)
-                self.streams[key].start()
+                self.streams[key] = {
+                    "stream": VideoStream(src=src, width=width, height=height, fps=fps),
+                    "last_accessed": current_time
+                }
+                self.streams[key]["stream"].start()
             except RuntimeError as e:
                 self.logger.error(f"Failed to create stream for {key}: {e}")
                 return None
-        return self.streams[key]
+        else:
+            # Update the last accessed time for an existing stream
+            self.streams[key]["last_accessed"] = current_time
+        return self.streams[key]["stream"]
     
     def cleanup_streams(self):
-        """Stop all video streams."""
+        """Stop and remove streams that have not been accessed recently."""
         while True:
             with self.thread_lock:
-                for key, stream in list(self.streams.items()):
-                    if stream.stopped:
-                        self.logger.info(f"Stopping stream for {key}")
+                current_time = datetime.now()
+                for key, data in list(self.streams.items()):
+                    stream = data["stream"]
+                    last_accessed = data["last_accessed"]
+                    # Remove streams that have been stopped or inactive for more than 5 minutes
+                    if stream.stopped or (current_time - last_accessed).total_seconds() > 300:
+                        self.logger.debug(f"Stopping and removing stream for {key} (last accessed: {last_accessed})")
                         stream.stop()
                         del self.streams[key]
-            time.sleep(60)  # Check every 5 seconds
-            self.logger.info("Cleaning up stopped streams.")    
+            time.sleep(60)  # Check every 60 seconds
+            self.logger.info("Cleaning up inactive streams.")    
             
     def define_routes(self):
         @self.app.route('/video_feed', methods=['POST', 'GET'])
@@ -86,7 +99,16 @@ class VidSpyServer:
         
         @self.app.route('/health', methods=['GET'])
         def health():
-            active_streams = [{"src": key[0], "width": key[1], "height": key[2], "fps": key[3]} for key in self.streams.keys()]
+            active_streams = [
+                {
+                    "src": key[0],
+                    "width": key[1],
+                    "height": key[2],
+                    "fps": key[3],
+                    "last_accessed": data["last_accessed"].isoformat()
+                }
+                for key, data in self.streams.items()
+            ]
             return jsonify({"status": "running", "active_streams": active_streams})
         
 app = VidSpyServer().app
