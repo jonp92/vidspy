@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", async function() {
             stopStream();
             return;
         }
-        await stopStream(); 
         if (currentIndex >= streams.length) {
             currentIndex = 0; // Reset to the first stream
         }
@@ -96,6 +95,13 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     
     videoStreamer.addEventListener("click", function() {
+        const eventX = event.clientX;
+        const eventY = event.clientY;
+        const videoWidth = videoStreamer.clientWidth;
+        const videoHeight = videoStreamer.clientHeight;
+        const clickX = (eventX / videoWidth) * 100;
+        const clickY = (eventY / videoHeight) * 100;
+        console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
         isPaused = !isPaused;
         if (!isPaused) spinner();
         startSlideshow(streams);
