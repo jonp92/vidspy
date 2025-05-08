@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                     if (event.target.textContent === "Settings") {
                         const settingsMenu = buildSettingsMenu();
                         contextMenuInstance.appendChild(settingsMenu);
-
+                        document.body.appendChild(settingsMenu); // Append to the body
                         return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
