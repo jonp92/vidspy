@@ -111,8 +111,6 @@ document.addEventListener("DOMContentLoaded", async function() {
                         videoStreamer.src = playPauseIconPath;
                         return;
                     } else if (event.target.id === "fullscreen") {
-                        overlayCanvas.width = videoStreamer.clientWidth;
-                        overlayCanvas.height = videoStreamer.clientHeight;
                         if (videoStreamer.requestFullscreen) {
                             videoStreamer.requestFullscreen();
                         } else if (videoStreamer.mozRequestFullScreen) { // Firefox
@@ -122,6 +120,8 @@ document.addEventListener("DOMContentLoaded", async function() {
                         } else if (videoStreamer.msRequestFullscreen) { // IE/Edge
                             videoStreamer.msRequestFullscreen();
                         }
+                        overlayCanvas.width = videoStreamer.clientWidth;
+                        overlayCanvas.height = videoStreamer.clientHeight;
                         return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
