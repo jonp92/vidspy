@@ -323,6 +323,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         qualityOptions.forEach(option => {
             const li = document.createElement("li");
             li.textContent = option;
+            li.classList.add("context-menu-item");
             li.addEventListener("click", function() {
                 quality = option;
                 console.log(`Quality set to: ${quality}`);
