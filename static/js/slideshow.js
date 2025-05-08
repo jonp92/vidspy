@@ -313,12 +313,9 @@ document.addEventListener("DOMContentLoaded", async function() {
     adjustCanvasForHiDPI(overlayCanvas, overlayContext);
 
     function buildSettingsMenu() {
-        const settingsMenu = document.createElement("div");
-        settingsMenu.id = "settingsMenu";
-        document.body.appendChild(settingsMenu);
-        const settingsMenuList = document.createElement("ul");
-        settingsMenuList.classList.add("context-menu");
-        settingsMenu.appendChild(settingsMenuList);
+        const settingsMenu = document.createElement("ul");
+        settingsMenu.classList.add("context-menu");
+        settingsMenu.appendChild(settingsMenu);
         const qualityOptions = ["Low", "Medium", "High"];
         qualityOptions.forEach(option => {
             const li = document.createElement("li");
@@ -331,7 +328,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                     startSlideshow(streams);
                 }
             });
-            settingsMenuList.appendChild(li);
+            settingsMenu.appendChild(li);
         });
     }
     buildSettingsMenu();
