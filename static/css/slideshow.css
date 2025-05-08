@@ -95,6 +95,21 @@ body {
     background-color: #555;
 }
 
+.settings-menu .btn-close {
+    position: absolute; /* Position it relative to the settings menu */
+    top: 10px; /* Add some spacing from the top */
+    right: 10px; /* Add some spacing from the right */
+    background: none; /* Remove default button styling */
+    border: none; /* Remove border */
+    font-size: 20px; /* Increase font size for better visibility */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    z-index: 1001; /* Ensure it appears above other elements */
+}
+
+.settings-menu .btn-close:hover {
+    color: red; /* Optional: Change color on hover for better feedback */
+}
+
 .spinner {
     position: absolute;
     top: 50%;
