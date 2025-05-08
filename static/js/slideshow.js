@@ -88,15 +88,14 @@ document.addEventListener("DOMContentLoaded", async function() {
             for (const listItem of templateContent.querySelectorAll("li")) {
                 listItem.addEventListener("click", function(event) {
                     event.preventDefault();
+                    if (document.getElementById("contextMenuInstance")) {
+                        contextMenuInstance.style.display = "none"; // Hide the context menu
+                    }
                     if (event.target.textContent === "Settings") {
                         settingsMenu.classList.toggle("active");
                         return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
-                    const parentDiv = findParentDiv(event.target);
-                    if (parentDiv) {
-                        parentDiv.style.display = "none"; // Hide the context menu
-                    }
                 });
             }
             contextMenuInstance = document.createElement("div");
