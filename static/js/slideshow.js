@@ -95,28 +95,35 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     const streams = await fetchStreams();
 
-    function drawArrow(side, timeout=false) {
+    function drawArrow(side, timeout = false) {
         const arrowWidth = 40;
         const arrowHeight = 30;
-        const arrowX = side === "left" ? 20 : videoStreamer.clientWidth - arrowWidth - 20;
-        const arrowY = (videoStreamer.clientHeight - arrowHeight) / 2;
+    
+        // Calculate the X position to center the arrow in the respective eighth
+        const arrowX = side === "left"
+            ? videoStreamer.clientWidth / 16 - arrowWidth / 2 // Center in the left eighth
+            : videoStreamer.clientWidth * 15 / 16 - arrowWidth / 2; // Center in the right eighth
+    
+        const arrowY = (videoStreamer.clientHeight - arrowHeight) / 2; // Vertically center the arrow
     
         overlayContext.fillStyle = "rgba(255, 255, 255, 0.82)";
         overlayContext.beginPath();
     
         if (side === "right") {
             // Arrow pointing to the left
-            overlayContext.moveTo(arrowX, arrowY);
-            overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight / 2);
-            overlayContext.lineTo(arrowX, arrowY + arrowHeight);
-        } else if (side === "left") {
-            // Arrow pointing to the right
             overlayContext.moveTo(arrowX + arrowWidth, arrowY);
             overlayContext.lineTo(arrowX, arrowY + arrowHeight / 2);
             overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight);
+        } else if (side === "left") {
+            // Arrow pointing to the right
+            overlayContext.moveTo(arrowX, arrowY);
+            overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight / 2);
+            overlayContext.lineTo(arrowX, arrowY + arrowHeight);
         }
+    
         overlayContext.closePath();
         overlayContext.fill();
+    
         if (timeout) {
             setTimeout(() => {
                 overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
