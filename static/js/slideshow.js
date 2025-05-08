@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     async function stopStream() {
         try {
-            const response = await fetch("/stop", {
+            const response = await fetch("/stop?src=all", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -94,8 +94,12 @@ document.addEventListener("DOMContentLoaded", async function() {
                     if (document.getElementById("contextMenuInstance")) {
                         contextMenuInstance.style.display = "none"; // Hide the context menu
                     }
-                    if (event.target.textContent === "Settings") {
+                    if (event.target.id === "settings") {
                         settingsMenu.classList.toggle("active");
+                        return;
+                    } else if (event.target.id === "stopStreams") {
+                        stopStream();
+                        videoStreamer.src = playPauseIconPath;
                         return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
