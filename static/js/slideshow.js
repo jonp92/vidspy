@@ -99,6 +99,10 @@ document.addEventListener("DOMContentLoaded", async function() {
                         return;
                     } else if (event.target.id === "stopStreams") {
                         stopStream();
+                        if (slideshowTimeout) {
+                            clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
+                        }
+                        isPaused = true;
                         videoStreamer.src = playPauseIconPath;
                         return;
                     }
@@ -247,9 +251,9 @@ document.addEventListener("DOMContentLoaded", async function() {
         alert("Error loading video. Please check the URL or try a different video.");
     });
 
-    window.addEventListener("beforeunload", function() {
-        stopStream();
-    });
+    // window.addEventListener("beforeunload", function() {
+    //     stopStream();
+    // });
 
     // Custom right-click menu
     videoStreamer.addEventListener("contextmenu", function (event) {
