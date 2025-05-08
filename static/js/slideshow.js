@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const streams = await fetchStreams();
 
     
-    videoStreamer.addEventListener("click", function() {
+    videoStreamer.addEventListener("click", function(event) {
         const eventX = event.clientX;
         const eventY = event.clientY;
         const videoWidth = videoStreamer.clientWidth;
