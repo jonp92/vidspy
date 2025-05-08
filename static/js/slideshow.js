@@ -191,4 +191,19 @@ document.addEventListener("DOMContentLoaded", async function() {
             spinner.style.display = "none"; // Hide the spinner
         }
     }
+
+    function adjustCanvasForHiDPI(canvas, context) {
+        const dpr = window.devicePixelRatio || 1; // Get the device pixel ratio
+        const rect = canvas.getBoundingClientRect(); // Get the canvas's CSS size
+    
+        // Set the canvas width and height to match the device pixel ratio
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+    
+        // Scale the drawing context to match the device pixel ratio
+        context.scale(dpr, dpr);
+    }
+    
+    // Adjust the overlay canvas for HiDPI
+    adjustCanvasForHiDPI(overlayCanvas, overlayContext);
 });
