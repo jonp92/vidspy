@@ -80,6 +80,12 @@ document.addEventListener("DOMContentLoaded", async function() {
             for (const listItem of templateContent.querySelectorAll("li")) {
                 listItem.addEventListener("click", function(event) {
                     event.preventDefault();
+                    if (event.target.textContent === "Settings") {
+                        const settingsMenu = buildSettingsMenu();
+                        contextMenuInstance.appendChild(settingsMenu);
+                        document.body.appendChild(settingsMenu); // Append to the body
+                        return;
+                    }
                     alert(`You clicked on ${listItem.textContent}`);
                 });
             }
@@ -329,7 +335,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             });
             settingsMenu.appendChild(li);
         });
-        document.body.appendChild(settingsMenu);
+        return settingsMenu;
     }
-    buildSettingsMenu();
+
 });
