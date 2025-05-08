@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         const arrowX = side === "left" ? 20 : videoStreamer.clientWidth - arrowWidth - 20;
         const arrowY = (videoStreamer.clientHeight - arrowHeight) / 2;
     
-        overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
+        overlayContext.fillStyle = "rgba(255, 255, 255, 0.65)";
         overlayContext.beginPath();
     
         if (side === "right") {
