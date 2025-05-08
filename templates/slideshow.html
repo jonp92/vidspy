@@ -15,7 +15,20 @@
         </ul>
     </template>
     <input type="hidden" id="autoPlay" value="{{ auto_play }}">
-    <div class="settings-menu" id="settingsMenu"></div>
+    <div class="settings-menu" id="settingsMenu">
+        <div class="settings-menu-item" id="autoPlayToggle">
+            <input type="checkbox" id="autoPlayCheckbox" {% if auto_play == 'true' %}checked{% endif %}>
+            <label for="autoPlayCheckbox">Auto Play</label>
+        </div>
+        <div class="settings-menu-item" id="qualitySelect">
+            <label for="quality">Quality:</label>
+            <select id="quality">
+                <option hidden value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+    </div>
     <div>
         <div class="spinner" id="spinner"
             {% if auto_play == 'false' %}style="display: none;"{% endif %}>
