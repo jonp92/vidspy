@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const settingsMenu = document.getElementById("settingsMenu");
     const closeSettingsMenuBtn = document.getElementById("closeSettings");
     const settingsQuality = document.getElementById("quality");
+    let longPressTimer;
     let quality = "Medium";
     let isPaused = true;
     currentIndex = 0;
@@ -194,6 +195,64 @@ document.addEventListener("DOMContentLoaded", async function() {
         isPaused = !isPaused;
         if (!isPaused) spinner();
         startSlideshow(streams);
+    });
+
+
+    
+    videoStreamer.addEventListener("touchstart", function (event) {
+        event.preventDefault(); // Prevent default touch behavior
+        longPressTimer = setTimeout(() => {
+            const currentTime = new Date().getTime();
+            if (currentTime - lastContextClickTime < 500) {
+                if (contextMenuInstance) {
+                    contextMenuInstance.style.display = "none"; // Hide the context menu
+                }
+                return; // Ignore if it's too close to the last interaction
+            } else {
+                lastContextClickTime = currentTime; // Update the last context click time
+            }
+    
+            const contextMenu = renderContextMenu();
+    
+            // Get the dimensions of the context menu
+            const menuWidth = contextMenu.offsetWidth;
+            const menuHeight = contextMenu.offsetHeight;
+    
+            // Get the dimensions of the viewport
+            const viewportWidth = document.documentElement.clientWidth;
+            const viewportHeight = document.documentElement.clientHeight;
+    
+            // Calculate the initial position of the context menu
+            let left = event.touches[0].clientX;
+            let top = event.touches[0].clientY;
+    
+            // Adjust the position if the menu would overflow the viewport
+            if (left + menuWidth > viewportWidth) {
+                left = viewportWidth - menuWidth; // Move the menu to the left
+            }
+            if (left < 0) {
+                left = 0; // Ensure the menu doesn't go off the left edge
+            }
+            if (top + menuHeight > viewportHeight) {
+                top = viewportHeight - menuHeight; // Move the menu up
+            }
+            if (top < 0) {
+                top = 0; // Ensure the menu doesn't go off the top edge
+            }
+    
+            // Set the position and display the menu
+            contextMenu.style.display = "block";
+            contextMenu.style.left = `${left}px`;
+            contextMenu.style.top = `${top}px`;
+        }, 500); // Trigger after 500ms
+    });
+    
+    videoStreamer.addEventListener("touchend", function () {
+        clearTimeout(longPressTimer); // Clear the timer if the touch ends
+    });
+    
+    videoStreamer.addEventListener("touchmove", function () {
+        clearTimeout(longPressTimer); // Clear the timer if the user moves their finger
     });
 
     // videoStreamer.addEventListener("mouseenter", function(event) {
