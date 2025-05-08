@@ -112,9 +112,9 @@ document.addEventListener("DOMContentLoaded", async function() {
         overlayContext.fillText(`X: ${clickX.toFixed(2)}%, Y: ${clickY.toFixed(2)}%`, eventX + 15, eventY - 15);
         overlayContext.strokeStyle = "red";
         overlayContext.strokeRect(eventX - 10, eventY - 10, 20, 20); // Draw a border around the square
-        setTimeout(() => {
-            overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
-        }, 2000); // Hide after 2 seconds
+        // setTimeout(() => {
+        //     overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
+        // }, 2000); // Hide after 2 seconds
         isPaused = !isPaused;
         if (!isPaused) spinner();
         startSlideshow(streams);
