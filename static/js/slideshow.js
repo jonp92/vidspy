@@ -120,8 +120,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                         } else if (videoStreamer.msRequestFullscreen) { // IE/Edge
                             videoStreamer.msRequestFullscreen();
                         }
-                        overlayCanvas.width = videoStreamer.clientWidth;
-                        overlayCanvas.height = videoStreamer.clientHeight;
+
                         return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
@@ -136,6 +135,11 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
         return contextMenuInstance;
     }
+
+    document.addEventListener("fullscreenchange", function() {
+        overlayCanvas.width = videoStreamer.clientWidth;
+        overlayCanvas.height = videoStreamer.clientHeight;
+    });
 
     const streams = await fetchStreams();
 
