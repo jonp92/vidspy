@@ -1,0 +1,142 @@
+[
+	{
+		"name": "Backyard",
+		"status": "Online",
+		"rtsp_urls": [
+			{
+				"quality": "High",
+                "width": 2688,
+                "height": 1512,
+                "fps": 24,
+				"url": "rtsp://192.168.1.1:7447/IV9jpKQoWcBYsShU"
+			},
+			{
+				"quality": "Medium",
+                "width": 1280,
+                "height": 720,
+                "fps": 24,
+				"url": "rtsp://192.168.1.1:7447/FPEzpNe9t7DdrLC4"
+			}
+		]
+	},
+    {
+        "name": "Deck",
+        "status": "Online",
+        "rtsp_urls": [
+            {
+                "quality": "High",
+                "width": 2688,
+                "height": 1512,
+                "fps": 24,
+                "url": "rtsp://192.168.1.1:7447/8ZftRSu8y6kGzgcm"
+            },
+            {
+                "quality": "Medium",
+                "width": 1280,
+                "height": 720,
+                "fps": 24,
+                "url": "rtsp://192.168.1.1:7447/MDM90CPOq9LXHC2u"
+            }
+        ]
+    },
+    {
+        "name": "Driveway",
+        "status": "Online",
+        "rtsp_urls": [
+            {
+                "quality": "High",
+                "width": 2688,
+                "height": 1512,
+                "fps": 24,
+                "url": "rtsp://192.168.1.1:7447/NNChmAFMqeibumvL"
+            },
+            {
+                "quality": "Medium",
+                "width": 1280,
+                "height": 720,
+                "fps": 24,
+                "url": "rtsp://192.168.1.1:7447/NDxdPcAiJa33yNfF"
+            }
+        ]
+    },
+    {
+        "name": "Front Yard",
+        "status": "Online",
+        "rtsp_urls": [
+            {
+                "quality": "High",
+                "width": 2688,
+                "height": 1512,
+                "fps": 24,
+                "url": "rtsp://192.168.1.1:7447/j5qTxcEyBkh22H1z"
+            },
+            {
+                "quality": "Medium",
+                "width": 1280,
+                "height": 720,
+                "fps": 24,
+                "url": "rtsp://192.168.1.1:7447/v41wW8tDSlJ4ll7v"
+            }
+        ]
+    },
+    {
+        "name": "House Rear",
+        "status": "Online",
+        "rtsp_urls": [
+            {
+                "quality": "High",
+                "width": 1920,
+                "height": 1080,
+                "fps": 15,
+                "url": "rtsp://192.168.1.1:7447/ZaIdFP3bITnvEu1Z"
+            },
+            {
+                "quality": "Medium",
+                "width": 1024,
+                "height": 576,
+                "fps": 15,
+                "url": "rtsp://192.168.1.1:7447/1aFsjGbyuhqQMWrg"
+            }
+        ]
+    },
+    {
+        "name": "Mailbox",
+        "status": "Online",
+        "rtsp_urls": [
+            {
+                "quality": "High",
+                "width": 1920,
+                "height": 1080,
+                "fps": 15,
+                "url": "rtsp://192.168.1.1:7447/fdtjV6eSATDIFYMD"
+            },
+            {
+                "quality": "Medium",
+                "width": 1024,
+                "height": 576,
+                "fps": 15,
+                "url": "rtsp://192.168.1.1:7447/vJxWOYTQviU3hiut"
+            }
+        ]
+    },
+    {
+        "name": "Side Yard",
+        "status": "Online",
+        "rtsp_urls": [
+            {
+                "quality": "High",
+                "width": 2688,
+                "height": 1512,
+                "fps": 24,
+                "url": "rtsp://192.168.1.1:7447/EIEUWfyDIl2oqId6"
+            },
+            {
+                "quality": "Medium",
+                "width": 1280,
+                "height": 720,
+                "fps": 24,
+                "url": "rtsp://192.168.1.1:7447/TT7rlfbrbJO1mrn0"
+            }
+        ]
+    }
+]

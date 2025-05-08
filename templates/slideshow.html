@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <link href="/static/css/slideshow.css" rel="stylesheet">
+</head>
+<body>
+    <template id="contextMenu">
+        <ul class="context-menu">
+            <li class="context-menu-item" id="settings">Settings</li>
+            <li class="context-menu-item" id="fullscreen">Fullscreen</li>
+            <li class="context-menu-item" id="About">About</li>
+        </ul>
+    </template>
+    <input type="hidden" id="autoPlay" value="{{ auto_play }}">
+    <div>
+        <div class="spinner" id="spinner"
+            {% if auto_play == 'false' %}style="display: none;"{% endif %}>
+        </div>
+        <img id="videoStreamer" {% if auto_play == 'false' %} src="/static/img/play.svg"{% endif %} class="img-fluid" alt="Video Stream">
+    </div>
+    <script src="static/js/slideshow.js"></script>
+</body>
+</html>
