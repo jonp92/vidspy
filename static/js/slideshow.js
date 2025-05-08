@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         if (eventX < videoWidth / 4) {
             console.log("Left quarter clicked");
             drawArrow("left", true);
-            index = (currentIndex - 2 + streams.length) % streams.length; // Go back to the previous stream
+            index = (currentIndex - 1 + streams.length) % streams.length; // Go back to the previous stream
             if (slideshowTimeout) {
                 clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
             }
