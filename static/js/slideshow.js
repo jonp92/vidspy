@@ -146,7 +146,9 @@ document.addEventListener("DOMContentLoaded", async function() {
             if (slideshowTimeout) {
                 clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
             }
-            startSlideshow(streams);
+            setTimeout(() => {
+                startSlideshow(streams);
+            }, 300); // Delay before starting the slideshow again
             return;
         } else if (eventX > (videoWidth * 3) / 4) {
             console.log("Right quarter clicked");
@@ -155,7 +157,9 @@ document.addEventListener("DOMContentLoaded", async function() {
             if (slideshowTimeout) {
                 clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
             }
-            startSlideshow(streams);
+            setTimeout(() => {
+                startSlideshow(streams);
+            }, 300); // Delay before starting the slideshow again
             return;
         }
         isPaused = !isPaused;
