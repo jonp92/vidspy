@@ -44,6 +44,7 @@ body {
 .context-menu .context-menu-item {
     padding: 5px 10px;
     border-radius: 5px;
+    white-space: nowrap;
     cursor: pointer;
 }
 
