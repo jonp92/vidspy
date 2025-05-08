@@ -104,10 +104,12 @@ body {
     font-size: 20px; /* Increase font size for better visibility */
     cursor: pointer; /* Change cursor to pointer on hover */
     z-index: 1001; /* Ensure it appears above other elements */
+    color: #fff; /* Default color */
+    transition: color 0.3s; /* Smooth transition for color change */
 }
 
 .settings-menu .btn-close:hover {
-    color: red; /* Optional: Change color on hover for better feedback */
+    color: #777; /* Optional: Change color on hover for better feedback */
 }
 
 .spinner {
