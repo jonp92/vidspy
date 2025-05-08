@@ -80,7 +80,7 @@ body {
     z-index: 1000;
 }
 
-.settings-menu.active {
+.settings-menu:active {
     display: flex;
 }
 
