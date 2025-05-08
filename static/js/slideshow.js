@@ -99,16 +99,16 @@ document.addEventListener("DOMContentLoaded", async function() {
                         return;
                     } else if (event.target.id === "stopStreams") {
                         const stopStreamAnswer = confirm("Are you sure you want to stop all streams? This affects every user viewing the stream.");
-                        console.log(stopStreamAnswer);
-                        if (stopStreamAnswer) {
-                            stopStream();
-                            if (slideshowTimeout) {
-                                clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
-                            }
-                            isPaused = true;
-                            videoStreamer.src = playPauseIconPath;
+                        if (!stopStreamAnswer) {
+                            console.log("User canceled the stop stream action.");
                             return;
                         }
+                        stopStream();
+                        if (slideshowTimeout) {
+                            clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
+                        }
+                        isPaused = true;
+                        videoStreamer.src = playPauseIconPath;
                         return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
