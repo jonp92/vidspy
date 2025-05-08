@@ -113,8 +113,10 @@ document.addEventListener("DOMContentLoaded", async function() {
         }, 5000); // Hide after 2 seconds
         if (eventX < videoWidth / 4) {
             console.log("Left quarter clicked");
+            return;
         } else if (eventX > (videoWidth * 3) / 4) {
             console.log("Right quarter clicked");
+            return;
         }
         isPaused = !isPaused;
         if (!isPaused) spinner();
