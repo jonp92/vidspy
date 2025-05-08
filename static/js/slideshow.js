@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             for (const listItem of templateContent.querySelectorAll("li")) {
                 listItem.addEventListener("click", function(event) {
                     event.preventDefault();
+                    event.parentElement.style.display = "none"; // Hide the context menu
                     if (event.target.textContent === "Settings") {
                         settingsMenu.classList.toggle("active");
                         return;
