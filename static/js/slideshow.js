@@ -95,6 +95,27 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     const streams = await fetchStreams();
 
+    function drawArrow(side) {
+        const arrowWidth = 20;
+        const arrowHeight = 10;
+        const arrowX = side === "left" ? 10 : videoStreamer.clientWidth - arrowWidth - 10;
+        const arrowY = (videoStreamer.clientHeight - arrowHeight) / 2;
+
+        overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
+        overlayContext.beginPath();
+        overlayContext.moveTo(arrowX, arrowY);
+        overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight / 2);
+        overlayContext.lineTo(arrowX, arrowY + arrowHeight);
+        overlayContext.closePath();
+        overlayContext.fill();
+    }
+    function drawArrows() {
+        overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the canvas
+        drawArrow("left");
+        drawArrow("right");
+    }
+    drawArrows();
+
     
     videoStreamer.addEventListener("click", function(event) {
         const eventX = event.clientX;
