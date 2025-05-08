@@ -96,22 +96,30 @@ document.addEventListener("DOMContentLoaded", async function() {
     const streams = await fetchStreams();
 
     function drawArrow(side) {
-        const arrowWidth = 20;
-        const arrowHeight = 10;
-        const arrowX = side === "left" ? 10 : videoStreamer.clientWidth - arrowWidth - 10;
+        const arrowWidth = 40;
+        const arrowHeight = 20;
+        const arrowX = side === "left" ? 20 : videoStreamer.clientWidth - arrowWidth - 20;
         const arrowY = (videoStreamer.clientHeight - arrowHeight) / 2;
-
+    
         overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
         overlayContext.beginPath();
-        overlayContext.moveTo(arrowX, arrowY);
-        overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight / 2);
-        overlayContext.lineTo(arrowX, arrowY + arrowHeight);
+    
+        if (side === "left") {
+            // Arrow pointing to the right
+            overlayContext.moveTo(arrowX, arrowY);
+            overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight / 2);
+            overlayContext.lineTo(arrowX, arrowY + arrowHeight);
+        } else if (side === "right") {
+            // Arrow pointing to the left
+            overlayContext.moveTo(arrowX + arrowWidth, arrowY);
+            overlayContext.lineTo(arrowX, arrowY + arrowHeight / 2);
+            overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight);
+        }
+    
         overlayContext.closePath();
         overlayContext.fill();
     }
 
-
-    
     videoStreamer.addEventListener("click", function(event) {
         const eventX = event.clientX;
         const eventY = event.clientY;
