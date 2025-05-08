@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const overlayCanvas = document.getElementById("overlay");
     const overlayContext = overlayCanvas.getContext("2d");
     const settingsMenu = document.getElementById("settingsMenu");
+    const settingsQuality = document.getElementById("quality");
     let quality = "Medium";
     let isPaused = true;
     currentIndex = 0;
@@ -326,6 +327,20 @@ document.addEventListener("DOMContentLoaded", async function() {
     
     // Adjust the overlay canvas for HiDPI
     adjustCanvasForHiDPI(overlayCanvas, overlayContext);
+
+    settingsQuality.addEventListener("change", function() {
+        quality = settingsQuality.value;
+        console.log("Selected quality:", quality);
+        if (isPaused) {
+            clearTimeout(slideshowTimeout);
+            videoStreamer.src = playPauseIconPath;
+            stopStream();
+            return;
+        }
+        startSlideshow(streams);
+        settingsMenu.classList.toggle("active");
+    });
+
 
 
 });
