@@ -141,6 +141,8 @@ document.addEventListener("DOMContentLoaded", async function() {
         // }, 5000); // Hide after 2 seconds
         if (eventX < videoWidth / 4) {
             console.log("Left quarter clicked");
+            overlayContext.fillStyle = "rgba(73, 73, 73, 0.65)";
+            overlayContext.fillRect(0, 0, (videoWidth * 3) / 4, videoHeight); // Fill the left three-quarters with a semi-transparent color
             drawArrow("left", true);
             currentIndex = (currentIndex - 2 + streams.length) % streams.length; // Go back to the previous stream
             if (slideshowTimeout) {
@@ -152,7 +154,11 @@ document.addEventListener("DOMContentLoaded", async function() {
             return;
         } else if (eventX > (videoWidth * 3) / 4) {
             console.log("Right quarter clicked");
+            overlayContext.fillStyle = "rgba(73, 73, 73, 0.65)";
+            overlayContext.fillRect(0, 0, videoWidth / 4, videoHeight); // Fill the right quarter with a semi-transparent color
             drawArrow("right", true);
+            // Fill the right quarter with a semi-transparent color
+            
             if (slideshowTimeout) {
                 clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
             }
