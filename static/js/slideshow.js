@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const overlayCanvas = document.getElementById("overlay");
     const overlayContext = overlayCanvas.getContext("2d");
     const settingsMenu = document.getElementById("settingsMenu");
+    const closeSettingsMenuBtn = document.getElementById("closeSettings");
     const settingsQuality = document.getElementById("quality");
     let quality = "Medium";
     let isPaused = true;
@@ -341,6 +342,9 @@ document.addEventListener("DOMContentLoaded", async function() {
         
     });
 
-
+    closeSettingsMenuBtn.addEventListener("click", function() {
+        settingsMenu.classList.remove("active");
+        console.log("Settings menu closed");
+    });
 
 });
