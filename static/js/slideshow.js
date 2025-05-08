@@ -116,6 +116,13 @@ document.addEventListener("DOMContentLoaded", async function() {
             overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight);
         }
         overlayContext.closePath();
+        overlayContext.fill();
+        overlayContext.strokeStyle = "black";
+        overlayContext.lineWidth = 2;
+        overlayContext.stroke();
+        overlayContext.fillStyle = "black";
+        overlayContext.font = "16px Arial";
+        overlayContext.fillText("Click to change stream", arrowX + 5, arrowY + 20);
         if (timeout) {
             setTimeout(() => {
                 overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
