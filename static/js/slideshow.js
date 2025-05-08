@@ -311,4 +311,27 @@ document.addEventListener("DOMContentLoaded", async function() {
     
     // Adjust the overlay canvas for HiDPI
     adjustCanvasForHiDPI(overlayCanvas, overlayContext);
+
+    function buildSettingsMenu() {
+        const settingsMenu = document.createElement("div");
+        settingsMenu.id = "settingsMenu";
+        settingsMenu.classList.add("settings-menu");
+        document.body.appendChild(settingsMenu);
+        const settingsMenuList = document.createElement("ul");
+        settingsMenu.appendChild(settingsMenuList);
+        const qualityOptions = ["Low", "Medium", "High"];
+        qualityOptions.forEach(option => {
+            const li = document.createElement("li");
+            li.textContent = option;
+            li.addEventListener("click", function() {
+                quality = option;
+                console.log(`Quality set to: ${quality}`);
+                if (isPaused) {
+                    startSlideshow(streams);
+                }
+            });
+            settingsMenuList.appendChild(li);
+        });
+    }
+    buildSettingsMenu();
 });
