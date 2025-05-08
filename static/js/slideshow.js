@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     const playPauseIconPath = "/static/img/play.svg";
     const contextMenuTemplate = document.getElementById("contextMenu");
     const loadingSpinner = document.getElementById("spinner");
+    const overlayCanvas = document.getElementById("overlay");
+    const overlayContext = overlayCanvas.getContext("2d");
     let quality = "Medium";
     let isPaused = true;
     currentIndex = 0;
@@ -102,6 +104,19 @@ document.addEventListener("DOMContentLoaded", async function() {
         const clickX = (eventX / videoWidth) * 100;
         const clickY = (eventY / videoHeight) * 100;
         console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
+        overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+        overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
+        overlayContext.fillRect(eventX - 10, eventY - 10, 20, 20); // Draw a small square at the click position
+        overlayContext.font = "16px Arial";
+        overlayContext.fillStyle = "white";
+        overlayContext.fillText(`X: ${clickX.toFixed(2)}%, Y: ${clickY.toFixed(2)}%`, eventX + 15, eventY - 15);
+        overlayContext.strokeStyle = "red";
+        overlayContext.strokeRect(eventX - 10, eventY - 10, 20, 20); // Draw a border around the square
+        overlayCanvas.style.display = "flex"; // Show the overlay canvas
+        setTimeout(() => {
+            overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
+            overlayCanvas.style.display = "none"; // Hide the overlay canvas
+        }, 2000); // Hide after 2 seconds
         isPaused = !isPaused;
         if (!isPaused) spinner();
         startSlideshow(streams);
