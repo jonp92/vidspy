@@ -84,6 +84,17 @@ body {
     display: flex;
 }
 
+.settings-menu .settings-menu-item {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+.settings-menu .settings-menu-item:hover {
+    background-color: #555;
+}
+
 .spinner {
     position: absolute;
     top: 50%;
