@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             for (const listItem of templateContent.querySelectorAll("li")) {
                 listItem.addEventListener("click", function(event) {
                     event.preventDefault();
-                    console.log(`Clicked on ${event.target}`);
+                    console.log(`Clicked on ${event.target.parentElement}`);
                     if (event.target.textContent === "Settings") {
                         settingsMenu.classList.toggle("active");
                         return;
