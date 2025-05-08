@@ -133,12 +133,12 @@ document.addEventListener("DOMContentLoaded", async function() {
         const clickY = (eventY / videoHeight) * 100;
         console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
 
-        overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
-        overlayContext.fillRect(eventX - 10, eventY - 10, 20, 20); // Draw a small square at the click position
-        overlayContext.strokeRect(eventX - 10, eventY - 10, 20, 20); // Draw a border around the square
-        setTimeout(() => {
-            overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
-        }, 5000); // Hide after 2 seconds
+        // overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
+        // overlayContext.fillRect(eventX - 10, eventY - 10, 20, 20); // Draw a small square at the click position
+        // overlayContext.strokeRect(eventX - 10, eventY - 10, 20, 20); // Draw a border around the square
+        // setTimeout(() => {
+        //     overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
+        // }, 5000); // Hide after 2 seconds
         if (eventX < videoWidth / 4) {
             console.log("Left quarter clicked");
             drawArrow("left", true);
