@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         const clickX = (eventX / videoWidth) * 100;
         const clickY = (eventY / videoHeight) * 100;
         console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
-        overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+
         overlayContext.fillStyle = "rgba(255, 0, 0, 0.5)";
         overlayContext.fillRect(clickX - 10, clickY - 10, 20, 20); // Draw a small square at the click position
         overlayContext.strokeRect(clickX - 10, clickY - 10, 20, 20); // Draw a border around the square
