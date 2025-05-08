@@ -143,12 +143,18 @@ document.addEventListener("DOMContentLoaded", async function() {
             console.log("Left quarter clicked");
             drawArrow("left", true);
             index = (currentIndex - 2 + streams.length) % streams.length; // Go back to the previous stream
+            if (slideshowTimeout) {
+                clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
+            }
             startSlideshow(streams);
             return;
         } else if (eventX > (videoWidth * 3) / 4) {
             console.log("Right quarter clicked");
             drawArrow("right", true);
             index = (currentIndex + 1) % streams.length; // Go to the next stream
+            if (slideshowTimeout) {
+                clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
+            }
             startSlideshow(streams);
             return;
         }
