@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", async function() {
         } else if (eventX > (videoWidth * 3) / 4) {
             console.log("Right quarter clicked");
             drawArrow("right", true);
-            currentIndex = (currentIndex + 1) % streams.length; // Go to the next stream
             if (slideshowTimeout) {
                 clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
             }
