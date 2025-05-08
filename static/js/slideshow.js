@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         } else if (eventX > (videoWidth * 3) / 4) {
             console.log("Right quarter clicked");
             overlayContext.fillStyle = "rgba(73, 73, 73, 0.65)";
-            overlayContext.fillRect(0, 0, videoWidth / 4, videoHeight); // Fill the right quarter with a semi-transparent color
+            overlayContext.fillRect(0, 0, videoWidth / 8, videoHeight); // Fill the right quarter with a semi-transparent color
             drawArrow("right", true);
             // Fill the right quarter with a semi-transparent color
             
