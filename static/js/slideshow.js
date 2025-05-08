@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     const streams = await fetchStreams();
 
-    function drawArrow(side) {
+    function drawArrow(side, timeout=false) {
         const arrowWidth = 40;
         const arrowHeight = 30;
         const arrowX = side === "left" ? 20 : videoStreamer.clientWidth - arrowWidth - 20;
@@ -115,9 +115,12 @@ document.addEventListener("DOMContentLoaded", async function() {
             overlayContext.lineTo(arrowX, arrowY + arrowHeight / 2);
             overlayContext.lineTo(arrowX + arrowWidth, arrowY + arrowHeight);
         }
-    
         overlayContext.closePath();
-        overlayContext.fill();
+        if (timeout) {
+            setTimeout(() => {
+                overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
+            }, 3000); // Hide after 3 seconds
+        }
     }
 
     videoStreamer.addEventListener("click", function(event) {
@@ -137,11 +140,11 @@ document.addEventListener("DOMContentLoaded", async function() {
         }, 5000); // Hide after 2 seconds
         if (eventX < videoWidth / 4) {
             console.log("Left quarter clicked");
-            drawArrow("left");
+            drawArrow("left", true);
             return;
         } else if (eventX > (videoWidth * 3) / 4) {
             console.log("Right quarter clicked");
-            drawArrow("right");
+            drawArrow("right", true);
             return;
         }
         isPaused = !isPaused;
