@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         const arrowX = side === "left" ? 20 : videoStreamer.clientWidth - arrowWidth - 20;
         const arrowY = (videoStreamer.clientHeight - arrowHeight) / 2;
     
-        overlayContext.fillStyle = "rgba(255, 255, 255, 0.65)";
+        overlayContext.fillStyle = "rgba(255, 255, 255, 0.82)";
         overlayContext.beginPath();
     
         if (side === "right") {
@@ -142,10 +142,14 @@ document.addEventListener("DOMContentLoaded", async function() {
         if (eventX < videoWidth / 4) {
             console.log("Left quarter clicked");
             drawArrow("left", true);
+            index = (currentIndex - 2 + streams.length) % streams.length; // Go back to the previous stream
+            startSlideshow(streams);
             return;
         } else if (eventX > (videoWidth * 3) / 4) {
             console.log("Right quarter clicked");
             drawArrow("right", true);
+            index = (currentIndex + 1) % streams.length; // Go to the next stream
+            startSlideshow(streams);
             return;
         }
         isPaused = !isPaused;
