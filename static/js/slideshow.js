@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const loadingSpinner = document.getElementById("spinner");
     const overlayCanvas = document.getElementById("overlay");
     const overlayContext = overlayCanvas.getContext("2d");
+    const settingsMenu = document.getElementById("settingsMenu");
     let quality = "Medium";
     let isPaused = true;
     currentIndex = 0;
@@ -81,9 +82,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 listItem.addEventListener("click", function(event) {
                     event.preventDefault();
                     if (event.target.textContent === "Settings") {
-                        const settingsMenu = buildSettingsMenu();
-                        contextMenuInstance.appendChild(settingsMenu);
-                        document.body.appendChild(settingsMenu); // Append to the body
+                        settingsMenu.classList.toggle("active");
                         return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
@@ -318,24 +317,5 @@ document.addEventListener("DOMContentLoaded", async function() {
     // Adjust the overlay canvas for HiDPI
     adjustCanvasForHiDPI(overlayCanvas, overlayContext);
 
-    function buildSettingsMenu() {
-        const settingsMenu = document.createElement("ul");
-        settingsMenu.classList.add("context-menu");
-        const qualityOptions = ["Low", "Medium", "High"];
-        qualityOptions.forEach(option => {
-            const li = document.createElement("li");
-            li.textContent = option;
-            li.classList.add("context-menu-item");
-            li.addEventListener("click", function() {
-                quality = option;
-                console.log(`Quality set to: ${quality}`);
-                if (isPaused) {
-                    startSlideshow(streams);
-                }
-            });
-            settingsMenu.appendChild(li);
-        });
-        return settingsMenu;
-    }
 
 });
