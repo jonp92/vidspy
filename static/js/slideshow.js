@@ -98,6 +98,10 @@ document.addEventListener("DOMContentLoaded", async function() {
                         settingsMenu.classList.toggle("active");
                         return;
                     } else if (event.target.id === "stopStreams") {
+                        const stopStream = confirm("Are you sure you want to stop all streams? This affects every user viewing the stream.");
+                        if (!stopStream) {
+                            return; // User canceled the action
+                        }
                         stopStream();
                         if (slideshowTimeout) {
                             clearTimeout(slideshowTimeout); // Clear the timeout to prevent immediate restart
