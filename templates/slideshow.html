@@ -16,7 +16,7 @@
     </template>
     <input type="hidden" id="autoPlay" value="{{ auto_play }}">
     <div class="settings-menu" id="settingsMenu">
-        <button id="closeSettings" class="btn-close" aria-label="Close"></button>
+        <button id="closeSettings" class="btn-close" aria-label="Close">X</button>
         <div class="settings-menu-item" id="autoPlayToggle">
             <input type="checkbox" id="autoPlayCheckbox" {% if auto_play == 'true' %}checked{% endif %}>
             <label for="autoPlayCheckbox">Auto Play</label>
