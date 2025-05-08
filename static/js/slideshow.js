@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                         return;
                     } else if (event.target.id === "stopStreams") {
                         const stopStream = confirm("Are you sure you want to stop all streams? This affects every user viewing the stream.");
+                        console.log(stopStream);
                         if (stopStream) {
                             stopStream();
                             if (slideshowTimeout) {
