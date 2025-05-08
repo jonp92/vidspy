@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }, 5000); // Hide after 2 seconds
         if (eventX < videoWidth / 3) {
             console.log("Left third clicked");
-        } else {
+        } else if (eventX > (videoWidth * 2) / 3) {
             console.log("Right third clicked");
         }
         isPaused = !isPaused;
