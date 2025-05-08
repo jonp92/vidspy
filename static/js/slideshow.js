@@ -110,6 +110,17 @@ document.addEventListener("DOMContentLoaded", async function() {
                         isPaused = true;
                         videoStreamer.src = playPauseIconPath;
                         return;
+                    } else if (event.target.id === "fullscreen") {
+                        if (videoStreamer.requestFullscreen) {
+                            videoStreamer.requestFullscreen();
+                        } else if (videoStreamer.mozRequestFullScreen) { // Firefox
+                            videoStreamer.mozRequestFullScreen();
+                        } else if (videoStreamer.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                            videoStreamer.webkitRequestFullscreen();
+                        } else if (videoStreamer.msRequestFullscreen) { // IE/Edge
+                            videoStreamer.msRequestFullscreen();
+                        }
+                        return;
                     }
                     alert(`You clicked on ${listItem.textContent}`);
                 });
