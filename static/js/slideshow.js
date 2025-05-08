@@ -209,6 +209,18 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     });
 
+    videoStreamer.addEventListener("mouseleave", function(event) {
+        const eventX = event.clientX;
+        const eventY = event.clientY;
+        const videoWidth = videoStreamer.clientWidth;
+        const videoHeight = videoStreamer.clientHeight;
+        const clickX = (eventX / videoWidth) * 100;
+        const clickY = (eventY / videoHeight) * 100;
+        console.log(`Click coordinates: X: ${clickX}%, Y: ${clickY}%`);
+
+        overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
+    });
+
     videoStreamer.addEventListener("error", function() {
         alert("Error loading video. Please check the URL or try a different video.");
     });
