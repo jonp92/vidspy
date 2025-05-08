@@ -6,10 +6,11 @@ from flask import Flask, Response, request, jsonify, render_template
 from stream import VideoStream, cv2, threading
 
 class VidSpyServer:
-    def __init__(self, host='127.0.1', port=5000, logger=None):
+    def __init__(self, host='127.0.1', port=5000, logger=None, cleanup_interval=120):
         self.app = Flask(__name__)
         self.host = host
         self.port = port
+        self.cleanup_interval = cleanup_interval
         self.video_stream = None
         self.logger = logger or self.app.logger
         self.streams = {}
@@ -47,7 +48,7 @@ class VidSpyServer:
                     stream = data["stream"]
                     last_accessed = data["last_accessed"]
                     # Remove streams that have been stopped or inactive for more than 5 minutes
-                    if stream.stopped or (current_time - last_accessed).total_seconds() > 300:
+                    if stream.stopped or (current_time - last_accessed).total_seconds() > self.cleanup_interval:
                         self.logger.debug(f"Stopping and removing stream for {key} (last accessed: {last_accessed})")
                         stream.stop()
                         del self.streams[key]
