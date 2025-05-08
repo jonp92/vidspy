@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         // setTimeout(() => {
         //     overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height); // Clear the overlay canvas
         // }, 5000); // Hide after 2 seconds
-        if (eventX < videoWidth / 4) {
+        if (eventX < videoWidth / 8) {
             console.log("Left quarter clicked");
             overlayContext.fillStyle = "rgba(73, 73, 73, 0.65)";
             overlayContext.fillRect(0, 0, videoWidth / 8, videoHeight); // Fill the left quarter with a semi-transparent color
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 startSlideshow(streams);
             }, 300); // Delay before starting the slideshow again
             return;
-        } else if (eventX > (videoWidth * 3) / 4) {
+        } else if (eventX > (videoWidth * 7) / 8) {
             console.log("Right quarter clicked");
             overlayContext.fillStyle = "rgba(73, 73, 73, 0.65)";
             overlayContext.fillRect(videoWidth * 7 / 8, 0, videoWidth / 8, videoHeight); // Fill the right quarter with a semi-transparent color
