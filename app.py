@@ -26,11 +26,12 @@ server = VidSpyServer(logger=logger)
 
 def cleanup(signal, frame):
     """Handle cleanup on exit."""
-    for key, stream in server.streams.items():
-        stream.stop()
-        logger.info(f"Stopped stream for {key}")
-    logger.info("Shutting down the server.")
-    sys.exit(0)
+    with server.thread_lock:
+        for key, data in server.streams.items():
+            stream = data["stream"]
+            logger.info(f"Stopping stream for src={key[0]}, width={key[1]}, height={key[2]}, fps={key[3]}")
+            stream.stop()
+            del server.streams[key]
 
 # Register signal handlers for graceful shutdown
 signal.signal(signal.SIGINT, cleanup)
