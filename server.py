@@ -2,7 +2,7 @@ import time
 import os
 import json
 from datetime import datetime
-from flask import Flask, Response, request, jsonify, render_template
+from flask import Flask, Response, request, jsonify, render_template, url_for
 from flask_compress import Compress
 from flask_minify import Minify
 from stream import VideoStream, cv2, threading
