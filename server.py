@@ -10,7 +10,7 @@ from stream import VideoStream, cv2, threading
 class VidSpyServer:
     def __init__(self, host='127.0.1', port=5000, logger=None, cleanup_interval=120):
         self.app = Flask(__name__)
-        Minify(app=self.app, html=True, js=True, cssless=True)
+        Minify(app=self.app, html=False, js=True, cssless=True)
         Compress(self.app)
         self.host = host
         self.port = port
