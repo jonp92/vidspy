@@ -3,11 +3,15 @@ import os
 import json
 from datetime import datetime
 from flask import Flask, Response, request, jsonify, render_template
+from flask_compress import Compress
+from flask_minify import Minify
 from stream import VideoStream, cv2, threading
 
 class VidSpyServer:
     def __init__(self, host='127.0.1', port=5000, logger=None, cleanup_interval=120):
         self.app = Flask(__name__)
+        Minify(app=self.app, html=True, js=True, cssless=True)
+        Compress(self.app)
         self.host = host
         self.port = port
         self.cleanup_interval = cleanup_interval
