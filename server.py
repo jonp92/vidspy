@@ -12,7 +12,7 @@ class VidSpyServer:
     def __init__(self, host='127.0.1', port=5000, logger=None, cleanup_interval=120):
         self.app = Flask(__name__)
         # Minify(app=self.app, html=False, js=True, cssless=True)
-        squeeze.init_app(self.app)
+        
         self.host = host
         self.port = port
         self.cleanup_interval = cleanup_interval
@@ -21,6 +21,7 @@ class VidSpyServer:
         self.streams = {}
         self.thread_lock = threading.Lock()
         self.define_routes()
+        squeeze.init_app(self.app)
         threading.Thread(target=self.cleanup_streams, daemon=True).start()
         
     
