@@ -97,7 +97,9 @@
 
 ## License
 
-MIT License (or your preferred license)
+This project is licensed under the [Creative Commons BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).  
+You may use and modify this software for non-commercial and open-source projects only.  
+Commercial use is **not permitted** without explicit permission.
 
 ---
 
